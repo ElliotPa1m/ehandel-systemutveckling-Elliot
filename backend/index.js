@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { MongoClient, Db } from "mongodb";
 import dns from "node:dns";
+import productRoutes from "./routes/products.js"
 
 dns.setServers(["1.1.1.1", "8.8.8.8"]);
 dotenv.config()
@@ -12,15 +13,18 @@ const PORT = process.env.PORT || 5000
 
 app.use(cors())
 app.use(express.json())
+app.use("/api/products", productRoutes)
 
 console.log(process.env.MONGO_URI)
 
 const client = new MongoClient(process.env.MONGO_URI) 
 
+export const db = client.db("ehandel")
+
 async function startServer() {
-// let connection =  await client.connect()
+  await client.connect()
   console.log("Ansluten till MongoDB")
-// connection.db("mystore").collection("orders").insertOne({email:""})
+  
   app.listen(PORT, () => {
     console.log(`Servern körs på port ${PORT}`)
   })
