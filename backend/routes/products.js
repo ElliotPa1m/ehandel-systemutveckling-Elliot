@@ -1,6 +1,7 @@
 import express from "express";
 import { db } from "../index.js";
 import { ObjectId } from "mongodb";
+import { protect, adminOnly } from "../middleware/authMiddleware.js";
 
 const router = express.Router()
 
@@ -9,13 +10,13 @@ router.get("/", async (req, res) => {
     res.json(products)
 })
 
-router.post("/", async (req, res) => {
+router.post("/", protect, adminOnly, async (req, res) => {
     const newProduct = req.body
     const result = await db.collection("products").insertOne(newProduct)
     res.json(result)
 })
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", protect, adminOnly, async (req, res) => {
     const id = req.params.id
     const update = req.body
     const result = await db.collection("products").updateOne(
@@ -25,7 +26,7 @@ router.put("/:id", async (req, res) => {
     res.json(result)
 })
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", protect, adminOnly, async (req, res) => {
     const id = req.params.id
     const result = await db.collection("products").deleteOne( { _id: new ObjectId(id) } )
     res.json(result)

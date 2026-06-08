@@ -5,6 +5,7 @@ import { MongoClient, Db } from "mongodb";
 import dns from "node:dns";
 import productRoutes from "./routes/products.js"
 import orderRoutes from "./routes/orders.js"
+import authRoutes from "./routes/auth.js"
 
 dns.setServers(["1.1.1.1", "8.8.8.8"]);
 dotenv.config()
@@ -16,6 +17,7 @@ app.use(cors())
 app.use(express.json())
 app.use("/api/products", productRoutes)
 app.use("/api/orders", orderRoutes)
+app.use("/api/auth", authRoutes)
 
 console.log(process.env.MONGO_URI)
 

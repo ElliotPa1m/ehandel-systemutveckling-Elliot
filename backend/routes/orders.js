@@ -1,6 +1,7 @@
 import express from "express";
 import { db } from "../index.js";
 import { ObjectId } from "mongodb";
+import { protect, adminOnly } from "../middleware/authMiddleware.js";
 
 const router = express.Router()
 
@@ -10,12 +11,12 @@ router.post("/", async (req, res) => {
     res.json(result)
 })
 
-router.get("/", async (req, res) => {
+router.get("/", protect, adminOnly, async (req, res) => {
     const products = await db.collection("orders").find().toArray()
     res.json(products)
 })
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", protect, adminOnly, async (req, res) => {
     const id = req.params.id
     const update = req.body
     const result = await db.collection("orders").updateOne(
