@@ -1,3 +1,3 @@
 export default function ProductsPage() {
-  return <h1>AdminLogin</h1>
+  return <h1>Confirmation</h1>
 }
