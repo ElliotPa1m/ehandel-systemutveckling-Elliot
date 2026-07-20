@@ -16,6 +16,12 @@ router.post("/", protect, adminOnly, async (req, res) => {
     res.json(result)
 })
 
+router.get("/:id", async (req, res) => {
+    const id = req.params.id
+    const product = await db.collection("products").findOne({ _id: new ObjectId(id) })
+    res.json(product)
+})
+
 router.put("/:id", protect, adminOnly, async (req, res) => {
     const id = req.params.id
     const update = req.body
