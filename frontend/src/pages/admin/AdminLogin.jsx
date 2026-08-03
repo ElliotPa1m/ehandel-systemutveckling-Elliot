@@ -16,7 +16,11 @@ export default function AdminLogin() {
     })
     const data = await response.json()
     localStorage.setItem("token", data.token)
-    navigate("/admin")
+    if (data.role === "admin") {
+      navigate("/admin")
+    } else {
+      navigate("/")
+    }
   }
 
   return (

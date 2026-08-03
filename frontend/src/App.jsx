@@ -10,6 +10,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ConfirmationPage from "./pages/ConfirmationPage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage"
+import RegisterPage from "./pages/RegisterPage"
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/admin/products/:id" element={<AdminSpecificProductPage />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
         <Route path="/login" element={<AdminLogin />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>
   )
