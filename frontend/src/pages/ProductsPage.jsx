@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useCart } from "../../context/CartContext";
+import { Link } from "react-router-dom";
 
 export default function ProductsPage() {
 
@@ -14,6 +15,7 @@ export default function ProductsPage() {
 
   return (
     <div>
+      <Link to="/cart">Cart</Link>
       {products.map(product => (
         <div key={product._id}>
           <h2>{product.name}</h2>
