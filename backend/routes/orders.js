@@ -8,7 +8,7 @@ const router = express.Router()
 router.post("/", async (req, res) => {
     const orderedProduct = req.body
     const result = await db.collection("orders").insertOne(orderedProduct)
-    res.json(result)
+    res.json({...orderedProduct, _id: result.insertedId})
 })
 
 router.get("/", protect, adminOnly, async (req, res) => {

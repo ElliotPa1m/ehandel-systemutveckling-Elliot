@@ -17,7 +17,8 @@ export default function CheckoutPage() {
       headers: {"Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}`},
       body: JSON.stringify({customerName: name, customerAddress: address, items: items, totalPrice: items.reduce((sum, item) => sum + item.price * item.quantity, 0)})
     })
-    navigate("/confirmation")
+    const data = await response.json()
+    navigate("/confirmation", {state: {order: data}})
   }
 
   return (
