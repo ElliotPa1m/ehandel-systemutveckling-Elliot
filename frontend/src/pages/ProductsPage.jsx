@@ -20,6 +20,7 @@ export default function ProductsPage() {
         <div key={product._id}>
           <h2>{product.name}</h2>
           <p>${product.price}</p>
+          <Link to={`/products/${product._id}`}>View details</Link>
           <button onClick={() => addToCart(product)}>Add to cart</button>
         </div>
       ))}
