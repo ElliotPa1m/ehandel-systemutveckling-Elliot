@@ -17,10 +17,11 @@ export default function ProductDetailsPage() {
 
   return (
     <div>
+      <img src={product.imageUrl} alt={product.name} />
       <h1>{product.name}</h1>
       <p>Age: {product.age}</p>
       <p>{product.description}</p>
-      <p>${product.price}</p>
+      <p>${product.price}/hour</p>
       <p>Category: {product.category}</p>
       <button onClick={() => addToCart(product)}>Add to cart</button>
     </div>

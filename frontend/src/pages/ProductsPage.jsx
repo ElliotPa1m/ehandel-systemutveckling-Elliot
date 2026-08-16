@@ -18,8 +18,9 @@ export default function ProductsPage() {
       <Link to="/cart">Cart</Link>
       {products.map(product => (
         <div key={product._id}>
+          <img src={product.imageUrl} alt={product.name} />
           <h2>{product.name}</h2>
-          <p>${product.price}</p>
+          <p>${product.price}/hour</p>
           <Link to={`/products/${product._id}`}>View details</Link>
           <button onClick={() => addToCart(product)}>Add to cart</button>
         </div>
