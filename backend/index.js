@@ -22,6 +22,7 @@ app.use("/api/auth", authRoutes)
 app.use("/api/cart", cartRoutes)
 
 console.log(process.env.MONGO_URI)
+console.log("hello")
 
 const client = new MongoClient(process.env.MONGO_URI) 
 
