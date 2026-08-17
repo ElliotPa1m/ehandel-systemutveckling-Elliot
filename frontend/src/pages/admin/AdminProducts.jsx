@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { host } from "../../variables";
 
 export default function AdminProducts() {
 
   const [products, setProducts] = useState([])
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:5000/api/products/${id}`, {
+    await fetch(`${host}/api/products/${id}`, {
       method: "DELETE",
       headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
     })
@@ -13,7 +14,7 @@ export default function AdminProducts() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch(`${host}/api/products`)
       .then(res => res.json())
       .then(data => setProducts(data))
   }, [])

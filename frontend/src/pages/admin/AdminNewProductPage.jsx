@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { host } from "../../variables"
 
 export default function AdminNewProductPage() {
 
@@ -13,7 +14,7 @@ const navigate = useNavigate()
 
 const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch("http://localhost:5000/api/products", {
+    const response = await fetch(`${host}/api/products`, {
       method: "POST",
       headers: {"Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}`},
       body: JSON.stringify({name, age: Number(age), description, price: Number(price), imageUrl, category})

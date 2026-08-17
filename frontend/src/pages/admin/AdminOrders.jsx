@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import { host } from "../../variables";
 
 export default function AdminOrders() {
 
   const [orders, setOrders] = useState([])
   const handleStatusChange = async (id, status) => {
-    await fetch(`http://localhost:5000/api/orders/${id}/status`, {
+    await fetch(`${host}/api/orders/${id}/status`, {
       method: "PUT",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("token")}`},
       body: JSON.stringify({status})
@@ -13,7 +14,7 @@ export default function AdminOrders() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/orders", {
+    fetch(`${host}/api/orders`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     })
       .then(res => res.json())

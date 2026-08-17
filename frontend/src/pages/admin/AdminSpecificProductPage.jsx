@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
+import { host } from "../../variables"
 
 export default function AdminSpecificProductPage() {
   const { id } = useParams()
@@ -13,7 +14,7 @@ const [imageUrl, setImageUrl] = useState("")
 const [category, setCategory] = useState("")
 
 useEffect(() => {
-  fetch(`http://localhost:5000/api/products/${id}`)
+  fetch(`${host}/api/products/${id}`)
     .then(res => res.json())
     .then(data => {
       setName(data.name)
@@ -27,7 +28,7 @@ useEffect(() => {
 
 const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch(`http://localhost:5000/api/products/${id}`, {
+    const response = await fetch(`${host}/api/products/${id}`, {
       method: "PUT",
       headers: {"Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}`},
       body: JSON.stringify({name, age: Number(age), description, price: Number(price), imageUrl, category})
