@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default function RegisterPage() {
 
@@ -23,6 +24,7 @@ export default function RegisterPage() {
       <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <button type="submit">Create account</button>
+      <Link to="/login">Already have an account? Log in here!</Link>
     </form>
   )
 }

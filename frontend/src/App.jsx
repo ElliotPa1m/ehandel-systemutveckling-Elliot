@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminNewProductPage from "./pages/admin/AdminNewProductPage";
 import AdminOrders from "./pages/admin/AdminOrders";
@@ -16,7 +16,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<ProductsPage />} />
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/products" element={<ProductsPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/confirmation" element={<ConfirmationPage />} />
