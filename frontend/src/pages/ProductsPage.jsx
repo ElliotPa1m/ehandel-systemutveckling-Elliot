@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import { host } from "../variables";
 
 export default function ProductsPage() {
 
@@ -8,7 +9,7 @@ export default function ProductsPage() {
   const {addToCart} = useCart()
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch(`${host}/api/products`)
       .then(res => res.json())
       .then(data => setProducts(data))
   }, [])

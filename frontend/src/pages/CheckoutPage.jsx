@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useCart } from "../../context/CartContext"
+import { host } from "../variables"
 
 export default function CheckoutPage() {
   
@@ -12,7 +13,7 @@ export default function CheckoutPage() {
 
     const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch("http://localhost:5000/api/orders", {
+    const response = await fetch(`${host}/api/orders`, {
       method: "POST",
       headers: {"Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}`},
       body: JSON.stringify({customerName: name, customerAddress: address, items: items, totalPrice: items.reduce((sum, item) => sum + item.price * item.quantity, 0)})
