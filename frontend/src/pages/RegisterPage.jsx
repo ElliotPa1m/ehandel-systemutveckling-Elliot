@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { host } from "../variables"
+import logo from "../assets/logo.png"
 
 export default function RegisterPage() {
 
@@ -21,11 +22,16 @@ export default function RegisterPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button type="submit">Create account</button>
-      <Link to="/login">Already have an account? Log in here!</Link>
+    <div>
+      <div className="logo-wrapper">
+        <img className="login-logo" src={logo} alt="logo" />
+      </div>
+    <form className="login-form" onSubmit={handleSubmit}>
+      <input className="input-field" type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+      <input className="input-field" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <button className="login-btn" type="submit">Create account</button>
+      <Link className="register-link" to="/login">Already have an account? Log in here!</Link>
     </form>
+    </div>
   )
 }

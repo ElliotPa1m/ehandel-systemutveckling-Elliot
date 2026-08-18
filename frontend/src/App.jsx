@@ -11,6 +11,7 @@ import ConfirmationPage from "./pages/ConfirmationPage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage"
 import RegisterPage from "./pages/RegisterPage"
+import "./App.css"
 
 function App() {
   return (

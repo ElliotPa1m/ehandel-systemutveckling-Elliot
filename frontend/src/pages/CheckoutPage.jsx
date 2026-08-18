@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useCart } from "../../context/CartContext"
 import { host } from "../variables"
+import Navbar from "../components/Navbar";
 
 export default function CheckoutPage() {
   
@@ -23,10 +24,13 @@ export default function CheckoutPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-      <input type="text" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
-      <button type="submit">Place order</button>
+    <div>
+    <Navbar />
+    <form className="login-form" onSubmit={handleSubmit}>
+      <input className="input-field" type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+      <input className="input-field" type="text" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
+      <button className="login-btn" type="submit">Place order</button>
     </form>
+    </div>
   )
 }
