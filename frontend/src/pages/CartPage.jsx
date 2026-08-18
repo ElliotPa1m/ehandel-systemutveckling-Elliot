@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useCart } from "../../context/CartContext"
+import Navbar from "../components/Navbar";
 
 export default function CartPage() {
   
@@ -10,14 +11,20 @@ export default function CartPage() {
 
   return (
     <div>
+      <Navbar />
+      <div className="cart-wrapper">
       {items.map(item => (
-        <div key={item.productId}>
-          <h2>{item.name}</h2>
-          <p>${item.price}</p>
-          <button onClick={() => removeFromCart(item.productId)}>Remove from cart</button>
+        <div className="cart-item" key={item.productId}>
+          <img className="detail-img" src={item.imageUrl} alt={item.name} />
+          <div className="cart-item-info">
+            <h2>{item.name}</h2>
+            <p>Price: ${item.price}/hour</p>
+            <button className="remove-from-cart-btn" onClick={() => removeFromCart(item.productId)}>Remove from cart</button>
+            <button className="checkout-btn" onClick={() => navigate("/checkout")}>Checkout</button>
+          </div>
         </div>
       ))}
-      <button onClick={() => navigate("/checkout")}>Checkout</button>
+      </div>
     </div>
   )
 }

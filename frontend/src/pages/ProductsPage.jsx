@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import { host } from "../variables";
+import Navbar from "../components/Navbar";
 
 export default function ProductsPage() {
 
@@ -16,16 +17,20 @@ export default function ProductsPage() {
 
   return (
     <div>
-      <Link to="/cart">Cart</Link>
+      <Navbar />
+      <div className="product-grid">
       {products.map(product => (
-        <div key={product._id}>
+        <div className="product-card" key={product._id}>
           <img src={product.imageUrl} alt={product.name} />
           <h2>{product.name}</h2>
           <p>${product.price}/hour</p>
-          <Link to={`/products/${product._id}`}>View details</Link>
-          <button onClick={() => addToCart(product)}>Add to cart</button>
+          <div className="card-buttons">
+            <Link className="details-link" to={`/products/${product._id}`}>View details</Link>
+            <button className="add-to-cart-btn" onClick={() => addToCart(product)}>Add to cart</button>
+          </div>
         </div>
       ))}
+      </div>
     </div>
   )
 }

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { host } from "../../variables"
+import logo from "../../assets/logo.png"
 
 export default function AdminLogin() {
 
@@ -31,12 +32,17 @@ export default function AdminLogin() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button type="submit">Login</button>
+    <div>
+      <div className="logo-wrapper">
+        <img className="login-logo" src={logo} alt="logo" />
+      </div>
+    <form className="login-form" onSubmit={handleSubmit}>
+      <input className="input-field" type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+      <input className="input-field" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <button className="login-btn" type="submit">Login</button>
       {error && <p>{error}</p>}
-      <Link to="/register">No account? Register here!</Link>
+      <Link className="register-link" to="/register">No account? Register here!</Link>
     </form>
+    </div>
   )
 }

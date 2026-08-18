@@ -16,7 +16,7 @@ export function CartProvider({children}) {
     }, [])
 
     const addToCart = async (product) => {
-        const newItems = [...items, {productId: product._id, name: product.name, price: product.price, quantity: 1}]
+        const newItems = [...items, {productId: product._id, name: product.name, price: product.price, quantity: 1, imageUrl: product.imageUrl}]
         setItems(newItems)
         await fetch("http://localhost:5000/api/cart", {
             method: "PUT",
