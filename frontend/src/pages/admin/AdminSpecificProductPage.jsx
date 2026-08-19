@@ -37,14 +37,14 @@ const handleSubmit = async (e) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}></input>
-      <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)}></input>
-      <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></input>
-      <input type="number" placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)}></input>
-      <input type="text" placeholder="Image" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
-      <input type="text" placeholder="Category" value={category} onChange={(e) => setCategory(e.target.value)}></input>
-      <button type="submit">Save</button>
+    <form className="new-product-wrapper" onSubmit={handleSubmit}>
+      <input className="new-product" type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}></input>
+      <input className="new-product" type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)}></input>
+      <input className="new-product" type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></input>
+      <input className="new-product" type="number" placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)}></input>
+      <input className="new-product" type="text" placeholder="Image" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
+      <input className="new-product" type="text" placeholder="Category" value={category} onChange={(e) => setCategory(e.target.value)}></input>
+      <button className="create-new-product" type="submit">Save</button>
     </form>
   )
 }

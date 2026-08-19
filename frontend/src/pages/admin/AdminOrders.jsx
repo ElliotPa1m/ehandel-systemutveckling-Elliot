@@ -22,13 +22,13 @@ export default function AdminOrders() {
   }, [])
 
   return (
-    <div>
+    <div className="order-container">
       {orders.map(order => (
         <div key={order._id}>
-          <h2>{order.customerName}</h2>
-          <p>${order.totalPrice}</p>
-          <p>{order.status}</p>
-          <select value={order.status} onChange={(e) => handleStatusChange(order._id, e.target.value)}>
+          <h2>Customer: {order.customerName}</h2>
+          <p>Total price: ${order.totalPrice}</p>
+          <p>Status: {order.status}</p>
+          <select className="admin-status" value={order.status} onChange={(e) => handleStatusChange(order._id, e.target.value)}>
             <option>Ordered</option>
             <option>Processing</option>
             <option>Delivered</option>
