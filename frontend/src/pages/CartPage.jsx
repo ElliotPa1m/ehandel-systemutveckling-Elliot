@@ -20,11 +20,11 @@ export default function CartPage() {
             <h2>{item.name}</h2>
             <p>Price: ${item.price}/hour</p>
             <button className="remove-from-cart-btn" onClick={() => removeFromCart(item.productId)}>Remove from cart</button>
-            <button className="checkout-btn" onClick={() => navigate("/checkout")}>Checkout</button>
           </div>
         </div>
       ))}
       </div>
+      <button className="checkout-btn" onClick={() => navigate("/checkout")}>Checkout</button>
     </div>
   )
 }

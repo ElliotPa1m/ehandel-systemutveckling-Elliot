@@ -20,13 +20,15 @@ export default function AdminProducts() {
   }, [])
 
   return (
-    <div>
+    <div className="admin-product-list">
       {products.map(product => (
-        <div key={product._id}>
+        <div className="admin-product-card" key={product._id}>
           <h2>{product.name}</h2>
           <p>${product.price}</p>
-          <Link to={`/admin/products/${product._id}`}>Edit</Link>
-          <button onClick={() => handleDelete(product._id)}>Delete</button>
+          <div className="admin-product-btn-wrapper">
+            <Link className="admin-product-link" to={`/admin/products/${product._id}`}>Edit</Link>
+            <button className="admin-product-btn" onClick={() => handleDelete(product._id)}>Delete</button>
+          </div>
         </div>
       ))}
     </div>
