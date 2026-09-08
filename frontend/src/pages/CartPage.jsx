@@ -8,6 +8,15 @@ export default function CartPage() {
   const navigate = useNavigate()
   const {items, removeFromCart} = useCart()
 
+  const handleCheckout = () => {
+    const token = localStorage.getItem("token")
+    if (!token) {
+      navigate("/login")
+    } else {
+      navigate("/checkout")
+    }
+  }
+
 
   return (
     <div>
@@ -24,7 +33,7 @@ export default function CartPage() {
         </div>
       ))}
       </div>
-      <button className="checkout-btn" onClick={() => navigate("/checkout")}>Checkout</button>
+      <button className="checkout-btn" onClick={handleCheckout}>Checkout</button>
     </div>
   )
 }
