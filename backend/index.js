@@ -21,6 +21,10 @@ app.use("/api/orders", orderRoutes)
 app.use("/api/auth", authRoutes)
 app.use("/api/cart", cartRoutes)
 
+app.get("/api/ping", (req, res) => {
+  res.json({ status: "ok" })
+})
+
 console.log(process.env.MONGO_URI)
 
 const client = new MongoClient(process.env.MONGO_URI) 
