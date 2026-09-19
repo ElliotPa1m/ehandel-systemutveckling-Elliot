@@ -4,7 +4,7 @@ import logo from '../assets/logo.png'
 export default function Navbar() {
     return(
         <nav className="navbar">
-            <Link to="/productspage"><img src={logo} alt="logo"/></Link>
+            <Link to="/"><img src={logo} alt="logo"/></Link>
             <Link className="cart-link" to="/cart">Cart</Link>
         </nav>
     )
